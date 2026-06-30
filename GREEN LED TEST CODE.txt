@@ -1,0 +1,17 @@
+void setup() {
+  pinMode(4, INPUT_PULLUP);  // Button
+  pinMode(12, OUTPUT);       // Green LED
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (digitalRead(4) == LOW) {
+    Serial.println("BUTTON PRESSED");
+    digitalWrite(12, HIGH);  // LED ON
+  } else {
+    Serial.println("NOT PRESSED");
+    digitalWrite(12, LOW);   // LED OFF
+  }
+
+  delay(300);
+}

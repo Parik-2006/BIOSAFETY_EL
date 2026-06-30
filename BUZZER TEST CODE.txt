@@ -1,0 +1,19 @@
+void setup() {
+  pinMode(4, INPUT_PULLUP);   // Button
+  pinMode(8, OUTPUT);         // Buzzer
+  Serial.begin(9600);
+}
+
+void loop() {
+  int buttonState = digitalRead(4);
+
+  if (buttonState == LOW) {
+    Serial.println("BUTTON PRESSED");
+    digitalWrite(8, HIGH);   // Buzzer ON
+  } else {
+    Serial.println("NOT PRESSED");
+    digitalWrite(8, LOW);    // Buzzer OFF
+  }
+
+  delay(300);
+}

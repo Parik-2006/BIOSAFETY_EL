@@ -1,0 +1,41 @@
+void setup() {
+  pinMode(2, INPUT);         // PIR
+  pinMode(4, INPUT_PULLUP);  // Button
+  pinMode(12, OUTPUT);       // Green LED
+  pinMode(8, OUTPUT);        // Buzzer
+  Serial.begin(9600);
+}
+
+void loop() {
+  int pir = digitalRead(2);
+  int button = digitalRead(4);
+
+  Serial.print("PIR: ");
+  Serial.print(pir);
+  Serial.print("  Button: ");
+  Serial.println(button);
+
+  if (button == LOW) {  // Button pressed
+
+    if (pir == LOW) {
+      // SAFE
+      digitalWrite(12, HIGH);  // LED ON
+      digitalWrite(8, LOW);    // Buzzer OFF
+      Serial.println("SAFE → LED ON");
+    } 
+    else {
+      // MOTION DETECTED
+      digitalWrite(12, LOW);   // LED OFF
+      digitalWrite(8, HIGH);   // Buzzer ON
+      Serial.println("MOTION → BUZZER ON");
+    }
+
+  } else {
+    // IDLE
+    digitalWrite(12, LOW);
+    digitalWrite(8, LOW);
+    Serial.println("IDLE");
+  }
+
+  delay(300);
+}

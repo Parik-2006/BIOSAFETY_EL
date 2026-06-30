@@ -1,0 +1,14 @@
+void setup() {
+  pinMode(10, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(10, LOW);   // ON
+  Serial.println("RELAY ON");
+  delay(2000);
+
+  digitalWrite(10, HIGH);  // OFF
+  Serial.println("RELAY OFF");
+  delay(2000);
+}

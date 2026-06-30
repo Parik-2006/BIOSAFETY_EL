@@ -1,0 +1,13 @@
+void setup() {
+  pinMode(4, INPUT_PULLUP);   // Button pin
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (digitalRead(4) == LOW) {
+    Serial.println("BUTTON PRESSED");
+  } else {
+    Serial.println("NOT PRESSED");
+  }
+  delay(300);
+}
